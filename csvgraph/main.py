@@ -11,11 +11,16 @@ from pylab import plot, legend, xlabel, show
 def main():
     parser = ArgumentParser(description='Plot pairs of columns from a CSV file.')
     parser.add_argument('filename')
+    parser.add_argument('--pudb', action='store_true')
     args = parser.parse_args()
 
     f = open(args.filename)
     csv_file = f.readlines()
     f.close()
+
+    if args.pudb:
+        import pudb
+        pudb.set_trace()
 
     csv_file[0] = csv_file[0].replace('\n','').strip('"')
     
@@ -30,6 +35,8 @@ def main():
         cells = row.split(',')
         for i,cell in enumerate(cells):
             cell = cells[i] = cell.strip('"')
+            if cell.strip() == "None":
+                cell = cells[i] = 0
             try:
                 float(cell)
             except ValueError:
