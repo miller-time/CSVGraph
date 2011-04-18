@@ -1,0 +1,26 @@
+========
+CSVGraph
+========
+
+v0.1
+
+Author: Russell Miller
+        4/18/2011
+
+Graph your CSV data and save it as a PNG!
+
+To install:
+    python setup.py [options]
+
+To use:
+    csvgraph [filename]
+
+-------------------------------------------------------------
+
+CSVGraph assumes that your first column of data is the X axis,
+each additional column is its own line on the Y axis.
+
+The first row is considered labels, and will be used to build
+a legend, any strings elsewhere in the file will be ignored.
+
+The X axis is labeled by the first cell of the first column.
