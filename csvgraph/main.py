@@ -6,7 +6,7 @@ Assuming column 1 is X value, and each column after is a Y value
 """
 
 from argparse import ArgumentParser
-from pylab import plot, legend, xlabel, savefig
+from matplotlib import pyplot
 
 def main():
     parser = ArgumentParser(description='Plot pairs of columns from a CSV file.')
@@ -17,6 +17,8 @@ def main():
     f = open(args.filename)
     csv_file = f.readlines()
     f.close()
+
+    filename = args.filename.split('/')[-1]
 
     if args.pudb:
         import pudb
@@ -43,18 +45,14 @@ def main():
                 continue
             columns[i].append(cell)
 
-#    for i,column in enumerate(columns):
- #       print i, column, len(column)
-
     for i in range(1, num_columns):
         if not columns[i]:
             continue
-        plot(columns[0], columns[i], label=labels[i].strip('"'))
+        pyplot.plot(columns[0], columns[i], label=labels[i].strip('"'))
 
-    legend(loc='best')
-    xlabel(labels[0].strip('"'))
-    savefig(args.filename.split('.')[0] + '.png')
-
+    pyplot.xlabel(labels[0].strip('"'))
+    pyplot.legend(loc='best')
+    pyplot.savefig(filename.split('.')[0] + '.png')
 
 if __name__=="__main__":
     main()
