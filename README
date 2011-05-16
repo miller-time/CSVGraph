@@ -2,6 +2,16 @@
 CSVGraph
 ========
 
+v0.8   5/16/2011
+
+Switched from pylab to matplotlib because pylab was causing
+import errors.
+
+Please post any bug reports to 
+    https://github.com/miller-time/CSVGraph/issues
+
+-------------------------------------------------------------
+
 v0.1
 
 Author: Russell Miller
@@ -9,8 +19,8 @@ Author: Russell Miller
 
 Graph your CSV data and save it as a PNG!
 
-To install:
-    python setup.py [options]
+Recommended installation:
+    python setup.py develop
 
 To use:
     csvgraph [filename]
