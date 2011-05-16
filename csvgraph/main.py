@@ -6,7 +6,7 @@ Assuming column 1 is X value, and each column after is a Y value
 """
 
 from argparse import ArgumentParser
-from pylab import plot, legend, xlabel, show
+from pylab import plot, legend, xlabel, savefig
 
 def main():
     parser = ArgumentParser(description='Plot pairs of columns from a CSV file.')
@@ -53,7 +53,7 @@ def main():
 
     legend(loc='best')
     xlabel(labels[0].strip('"'))
-    show()
+    savefig(args.filename.split('.')[0] + '.png')
 
 
 if __name__=="__main__":
